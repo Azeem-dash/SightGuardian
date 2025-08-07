@@ -1,208 +1,75 @@
-# 🚨 SightGuardian: AI-Powered Smart Surveillance System
 
-![Banner](./assets/sightguardian-banner.png)
-*Detect. Analyze. Protect. — Real-time smart surveillance made practical with Hugging Face models.*
+# SightGuardian
 
----
+SightGuardian is an innovative 3D spatial visualization platform designed to offer immersive environmental awareness for surveillance and site monitoring. It integrates real-time 3D model rendering, camera feeds, and interactive UI to allow users to view physical spaces in a digital, spatially accurate format.
 
-## 📌 Overview
+## 🌐 Why We Need This
 
-**SightGuardian** is an AI-driven surveillance assistant designed to detect and report suspicious behavior, safety hazards, or emergency events from real-time video streams.
+Traditional surveillance systems provide flat, 2D camera feeds. These are difficult to spatially interpret, especially in large environments. SightGuardian aims to:
 
-This project uses cutting-edge models from [Hugging Face](https://huggingface.co/) to intelligently process video feeds, identify abnormal activities (e.g., fights, fire, weapons), and deliver actionable alerts — all while preserving privacy and enabling scalability.
+- Map camera feeds onto 3D models for real-time awareness
+- Offer immersive, interactive surveillance
+- Make situational decisions faster and more accurately
 
----
+## 🚨 Problem It Solves
 
-## 💡 Key Features
+- Lack of spatial awareness with standard CCTV
+- Delays in emergency response due to non-intuitive views
+- Disjointed UI systems and poor integration between maps and feeds
 
-* 🎯 Real-time **object detection** (e.g., people, weapons, smoke)
-* 🧠 **Anomaly detection** for violence, loitering, or falls
-* 🔥 Fire & smoke detection using **image classification**
-* 📝 Auto-generated **incident reports** using text generation
-* 📍 **Location-aware** tracking with map-based dashboards
-* ⚠️ Alerting system with webhooks, email, or SMS
-* 🛡️ Privacy-first: no facial recognition, edge-processing support
-* 🌐 Scalable architecture (cloud or on-prem)
+## 🔍 Key Features
 
----
+- 3D model rendering using WebGL/Three.js
+- Real-time camera feed overlays
+- Google Maps integration for precise geo-location
+- Interactive camera selection and view navigation
+- Scalable component-based frontend (React.js)
 
-## 🔍 Use Cases
+## 🛠️ Tech Stack
 
-* City surveillance & smart city initiatives
-* Public event crowd monitoring
-* Retail and warehouse security
-* School & campus safety enforcement
+- Frontend: React, Three.js, Google Maps API
+- Backend: Node.js, Express (can integrate with OpenCV or similar for analytics)
+- Other Tools: WebSocket (for real-time), TailwindCSS
 
----
-
-## 🧠 AI Tasks Used (from Hugging Face)
-
-| Task                        | Purpose                                             |
-| --------------------------- | --------------------------------------------------- |
-| `Object Detection`          | Identify threats like weapons or suspicious objects |
-| `Video Classification`      | Detect violent or unusual behavior                  |
-| `Image Segmentation`        | Extract people/objects from background              |
-| `Text Generation`           | Summarize detected events                           |
-| `Visual Question Answering` | Ask questions like “is someone lying down?”         |
-| `Depth Estimation`          | Estimate distance between entities                  |
-| `Image-to-Text`             | Describe scenes for auto-reporting                  |
-
----
-
-## 🧰 Tech Stack
-
-### Frontend
-
-* [Next.js](https://nextjs.org/)
-* [Tailwind CSS](https://tailwindcss.com/)
-* [Mapbox](https://www.mapbox.com/) / Google Maps API
-* [Socket.IO](https://socket.io/) for live alert streaming
-
-### Backend
-
-* [FastAPI](https://fastapi.tiangolo.com/)
-* [PostgreSQL](https://www.postgresql.org/) + PostGIS
-* [Redis](https://redis.io/) for task queuing
-* [OpenCV](https://opencv.org/) + [FFmpeg](https://ffmpeg.org/) for video processing
-
-### AI/ML
-
-* [Transformers](https://huggingface.co/transformers/)
-* [PyTorch](https://pytorch.org/)
-* [ONNX Runtime](https://onnxruntime.ai/)
-* [YOLOv7](https://github.com/WongKinYiu/yolov7) or Hugging Face vision models
-
----
-
-## 🖼️ System Architecture
-
-```
-[Camera Stream or RTSP Feed]
-      ↓
-[Video Preprocessor (OpenCV/FFmpeg)]
-      ↓
-[Inference Engine (Object Detection, Anomaly, Segmentation)]
-      ↓
-[Alert Scorer & Event Aggregator]
-      ↓
-[PostgreSQL + Redis Queue]
-      ↓                   ↓
-[Incident Report Engine]  [Alert Notifier]
-      ↓                   ↓
-[Frontend Dashboard (Map + Timeline + Viewer)]
-```
-
----
-
-## 📸 Screenshots (Mockups)
-
-> Replace with real screenshots once implemented
-
-| Live Detection              | Incident Timeline          | Report Example           |
-| --------------------------- | -------------------------- | ------------------------ |
-| ![](./assets/live-feed.png) | ![](./assets/timeline.png) | ![](./assets/report.png) |
-
----
-
-## ⚙️ Setup Instructions
-
-### 1. Clone the Repo
+## 🚀 Setup Guide
 
 ```bash
-git clone https://github.com/yourusername/sightguardian.git
-cd sightguardian
-```
-
-### 2. Backend Setup
-
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-
-### 3. Frontend Setup
-
-```bash
-cd frontend
+git clone https://github.com/your-username/SightGuardian.git
+cd SightGuardian
 npm install
 npm run dev
 ```
 
-### 4. Start Camera Feed (for testing)
+Make sure you add the required `.env` file with:
 
-```bash
-ffmpeg -i test-video.mp4 -f image2pipe -vcodec rawvideo -pix_fmt rgb24 -
+```
+REACT_APP_GOOGLE_MAPS_API_KEY=your_api_key
+REACT_APP_BACKEND_URL=http://localhost:5000
 ```
 
----
+## 📷 Usage
 
-## 🧪 Sample Data Sources
-
-* Public camera feeds: [https://trafficcams.com/](https://trafficcams.com/)
-* Drone data: [OpenAerialMap](https://openaerialmap.org/)
-* Video datasets: [UCF-Crime](http://crimelab.cs.ucf.edu/), [VIRAT Video](https://viratdata.org/)
-
----
-
-## 🚀 Roadmap
-
-* [x] Object detection (people, weapons, fire)
-* [x] Incident report generation
-* [ ] Real-time video streaming from edge devices
-* [ ] Activity recognition (e.g., falls, fights)
-* [ ] VQA module integration
-* [ ] Admin dashboard with permissions
-* [ ] Docker + Kubernetes deployment support
-
----
-
-## 🛡️ Ethical & Privacy Principles
-
-* 🚫 No facial recognition used
-* ✅ Edge inference supported to avoid cloud video uploads
-* 📜 Transparent logging and data retention policies
-* 👮 Human-in-the-loop alerts for critical events
-
----
-
-## 📈 Performance Goals
-
-| Metric              | Target  |
-| ------------------- | ------- |
-| Detection Accuracy  | ≥ 85%   |
-| False Positive Rate | ≤ 10%   |
-| Report Latency      | ≤ 3 sec |
-| Stream Delay        | ≤ 2 sec |
-
----
+- Launch the app
+- Upload or fetch the 3D model of the monitored site
+- Map each camera's RTSP feed to corresponding coordinates
+- View live feeds with camera FOV displayed spatially
 
 ## 🤝 Contributing
 
-1. Fork the repo and clone it locally.
-2. Create a new branch: `feat/your-feature-name`.
-3. Make your changes and commit: `git commit -m 'feat: added new feature'`
-4. Push to the branch: `git push origin feat/your-feature-name`
-5. Open a pull request!
-
----
+PRs and feedback are welcome. Please read our `CONTRIBUTING.md`.
 
 ## 📄 License
 
-[MIT](LICENSE)
+MIT License © 2025
 
----
+## 📚 References
 
-## 💬 Contact
+- [Three.js Documentation](https://threejs.org/docs/)
+- [Google Maps Geospatial API](https://developers.google.com/maps/documentation/geospatial/overview)
+- [WebRTC / RTSP Streams](https://www.videolan.org/)
+- Blog: [Why Spatial Surveillance Matters](https://example.com/spatial-awareness-blog)
 
-Built by [Your Name](https://yourwebsite.com)
-🔗 LinkedIn · 💼 Portfolio · ✉️ [azeemshafeeq125@gmail.com](mailto:azeemshafeeq125@gmail.com)
+## 🙌 Made by Azeem Shafeeq
 
----
-
-## ⭐️ Show Your Support
-
-If you like this project, please give it a ⭐️ and share it with others!
-
+Website: [azeems.netlify.app](https://azeems.netlify.app)  
+LinkedIn: [@azeemshafeeq](https://www.linkedin.com/in/azeemshafeeq)
